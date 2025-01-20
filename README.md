@@ -1,6 +1,7 @@
+![git7](https://github.com/user-attachments/assets/38f655c6-d838-47dd-94d5-d485a51bd0b1)
 *Foro Challenge*
-- Este proyecto necesita manualmente puede necesitar inyeccion manual de un usuario y una contraseña a la base de datos, la contraseña necesaria es : "$2a$10$N3H2x4LL4N8cV8w.lJTORuzbVbVlnLz.0jqXQ8pKSRQUq4njNwqd6"
-
+- Este proyecto puede necesitar inyeccion manual de un usuario y una contraseña a la base de datos, la contraseña necesaria es :"$2a$10$N3H2x4LL4N8cV8w.lJTORuzbVbVlnLz.0jqXQ8pKSRQUq4njNwqd6".
+- http://localhost:8080/swagger-ui/index.html#/
 -En el proyecto existe peticiones httpRequest:
 
 1. Ingreso Usuario (Post) : http://localhost:8080/login
