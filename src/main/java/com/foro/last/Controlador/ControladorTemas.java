@@ -3,6 +3,7 @@ package com.foro.last.Controlador;
 import com.foro.last.Dominio.TablasRepositorios.RegistroTema;
 import com.foro.last.Dominio.Interfaz.TemasForo;
 import com.foro.last.Dominio.Temas.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/topicos")
+@SecurityRequirement(name = "bearer-key")
 public class ControladorTemas {
     private final TemasForo repositorioForo;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

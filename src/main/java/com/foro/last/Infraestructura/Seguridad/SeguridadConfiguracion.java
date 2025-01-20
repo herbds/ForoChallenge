@@ -1,5 +1,8 @@
 package com.foro.last.Infraestructura.Seguridad;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,15 +26,14 @@ public class SeguridadConfiguracion {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSeguridad) throws Exception {
-        return httpSeguridad.csrf().disable().sessionManagement().
-                sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .requestMatchers(HttpMethod.POST, "/login")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
+        return httpSeguridad.csrf(csrf -> csrf.disable())
+                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests((authorizeHttpRequests) ->
+                        authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/login").permitAll()
+                                .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
+                                .anyRequest()
+                                .authenticated()
+                )
                 .addFilterBefore(filtroSeguridad, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
@@ -46,6 +48,14 @@ public class SeguridadConfiguracion {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .components(new Components()
+                        .addSecuritySchemes("bearer-key",
+                                new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
     }
 
 
