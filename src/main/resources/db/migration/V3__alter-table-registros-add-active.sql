@@ -1,0 +1,1 @@
+ALTER TABLE registros ADD activo tinyint;

@@ -1,0 +1,1 @@
+ALTER TABLE registros ADD profesor VARCHAR(100) NOT NULL;
