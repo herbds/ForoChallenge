@@ -33,6 +33,8 @@
 5. Problematicas Actuales (Get) : http://localhost:8080/topicos
 6. Consulta Problematicas (Get) : http://localhost:8080/topicos/14
 
+7. Imagenes registradas del funcionamiento del código
+
 
 ![git1](https://github.com/user-attachments/assets/4c06e347-de4d-4c44-b916-9849ac8a2abf)
 ![git2](https://github.com/user-attachments/assets/ef393bcb-dbf8-4e39-b6ca-11e0dcf43b57)
